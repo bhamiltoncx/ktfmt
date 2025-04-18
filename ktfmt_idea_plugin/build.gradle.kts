@@ -32,7 +32,9 @@ group = "com.facebook"
 
 version = "$pluginVersion.$ktfmtVersion"
 
-kotlin { jvmToolchain(17) }
+kotlin {
+  //jvmToolchain(17)
+}
 
 repositories {
   mavenCentral()

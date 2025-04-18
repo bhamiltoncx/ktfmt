@@ -39,7 +39,9 @@ dependencies {
   testImplementation(kotlin("test-junit"))
 }
 
-kotlin { jvmToolchain(17) }
+kotlin {
+  //jvmToolchain(17)
+}
 
 tasks {
   test { useJUnit() }

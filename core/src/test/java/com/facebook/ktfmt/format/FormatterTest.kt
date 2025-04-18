@@ -1154,6 +1154,8 @@ class FormatterTest {
     val code =
         """
       |import com.unused.Sample
+      |import `com.used.Foo.Bar.baz`
+      |import `com.used.Foo.Baz.blech` as quux
       |import com.used.FooBarBaz as Baz
       |import com.used.bar // test
       |import com.used.`class`
@@ -1166,12 +1168,15 @@ class FormatterTest {
       |fun test(input: we) {
       |  Baz(`class`)
       |  `if` { bar }
+      |  `else` { baz + quux }
       |  val x = unused()
       |}
       |"""
             .trimMargin()
     val expected =
         """
+      |import `com.used.Foo.Bar.baz`
+      |import `com.used.Foo.Bar.blech` as quux
       |import com.used.FooBarBaz as Baz
       |import com.used.a.*
       |import com.used.b as `if`
@@ -1182,6 +1187,7 @@ class FormatterTest {
       |fun test(input: we) {
       |  Baz(`class`)
       |  `if` { bar }
+      |  `else` { baz + quux }
       |  val x = unused()
       |}
       |"""
